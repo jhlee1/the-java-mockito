@@ -24,6 +24,11 @@ class StudyServiceTest {
       public Optional<Member> findById(Long memberId) {
         return Optional.empty();
       }
+
+      @Override
+      public void validate(Long memberId) {
+
+      }
     };
 
     StudyRepository studyRepository = new StudyRepository() {

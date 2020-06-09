@@ -7,4 +7,6 @@ import lee.joohan.thejavamockito.exception.MemberNotFoundException;
 
 public interface MemberService {
   Optional<Member> findById(Long memberId);
+
+  void validate(Long memberId);
 }

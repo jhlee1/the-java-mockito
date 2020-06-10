@@ -1,6 +1,7 @@
 package lee.joohan.thejavamockito.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doThrow;
@@ -97,5 +98,38 @@ public class StudyServiceMockStubbingTest {
 
     assertThrows(RuntimeException.class, () -> memberService.findById(2L));
     assertEquals(Optional.empty(), memberService.findById(3L));
+  }
+
+  @Test
+  void homework() {
+    //TODO: MemberService 객체에 findById 메소드를 1L 값으로 호출하면 member 객체를 리턴하도록 stubbing
+    //TODO: StudyRepository 객체에 save 메소드를 study 객체로 호출하면 study 객체 그대로 리턴하도록 stubbing
+
+    Member member = new Member();
+
+    member.setId(1L);
+    member.setEmail("joohan@email.com");
+
+    when(memberService.findById(1L))
+        .thenReturn(Optional.of(member));
+
+    Study study = new Study(10, "테스트");
+
+    study.setOwner(member);
+
+    when(studyRepository.save(study))
+    .thenReturn(study);
+
+    member = memberService.findById(1L).get();
+    study = studyRepository.save(study);
+
+    assertNotNull(study.getOwner());
+    assertEquals(member, study.getOwner());
+  }
+  
+  // 객체에 무슨 일이 일어났는지 확인
+  @Test
+  void verifying() {
+
   }
 }

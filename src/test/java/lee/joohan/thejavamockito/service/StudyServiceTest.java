@@ -34,6 +34,11 @@ class StudyServiceTest {
       public void notify(Study study) {
 
       }
+
+      @Override
+      public void notify(Member member) {
+
+      }
     };
 
     StudyRepository studyRepository = new StudyRepository() {

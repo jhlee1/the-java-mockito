@@ -25,7 +25,17 @@ public class StudyService {
 
     Study newStudy = studyRepository.save(study);
     memberService.notify(newStudy);
+    memberService.notify(member);
 
     return studyRepository.save(study);
+  }
+
+  public Study openStudy(Study study) {
+    study.open();
+
+    Study openedStudy = studyRepository.save(study);
+    memberService.notify(openedStudy);
+
+    return openedStudy;
   }
 }

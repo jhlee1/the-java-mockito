@@ -126,10 +126,4 @@ public class StudyServiceMockStubbingTest {
     assertNotNull(study.getOwner());
     assertEquals(member, study.getOwner());
   }
-  
-  // 객체에 무슨 일이 일어났는지 확인
-  @Test
-  void verifying() {
-
-  }
 }
